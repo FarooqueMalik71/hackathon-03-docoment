@@ -1,0 +1,58 @@
+// pages/checkout.js
+import { useState } from 'react';
+
+export default function Checkout() {
+  const [orderID, setOrderID] = useState('');
+  const [customerInfo, setCustomerInfo] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+  });
+
+  const handleInputChange = (e) => {
+    setCustomerInfo({ ...customerInfo, [e.target.name]: e.target.value });
+  };
+
+  const submitOrder = () => {
+    // Submit order logic here
+    console.log('Order ID:', orderID);
+    console.log('Customer Info:', customerInfo);
+    // Call API to process order
+  };
+
+  return (
+    <div>
+      <h1>Checkout</h1>
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        value={customerInfo.name}
+        onChange={handleInputChange}
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={customerInfo.email}
+        onChange={handleInputChange}
+      />
+      <input
+        type="text"
+        name="phone"
+        placeholder="Phone"
+        value={customerInfo.phone}
+        onChange={handleInputChange}
+      />
+      <input
+        type="text"
+        name="address"
+        placeholder="Address"
+        value={customerInfo.address}
+        onChange={handleInputChange}
+      />
+      <button onClick={submitOrder}>Submit Order</button>
+    </div>
+  );
+}
